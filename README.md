@@ -31,7 +31,7 @@
 - [Note sul debugging](guides/debug.md)
 - [Impaginare un documento](guides/document.md)
 - [Impaginare un esame](guides/exams.md)
-- [Impaginare delle trasparenze](guides/slides.md)
+- [Impaginare trasparenze](guides/slides.md)
 - [Impaginare un diario](guides/journal.md)
 - [Impaginare immagini](guides/graphics.md)
 - [Impaginare tabelle](guides/tables.md)
