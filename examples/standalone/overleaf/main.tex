@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\title{Pacchetto \texttt{standalone}}
+\author{Emanuele Nardi}
+\date{\today}
+
+% arara: pdflatex: { synctex: no }
+% arara: pdflatex: { synctex: no }
+% arara: pdflatex: { synctex: yes }
+% arara: latexmk: { clean: partial }
+%! arara: clean: { extensions: [sta] }
+\begin{document}
+
+	\maketitle
+
+	\section{First section}
+	\import{sections/}{introduction}
+
+\end{document}

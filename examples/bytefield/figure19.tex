@@ -1,0 +1,17 @@
+\documentclass[border=5pt]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}{16} \bitbox{8}{Type} & \bitbox{8}{\# of nodes} \\
+
+	\wordbox{1}{Node~1} \\
+	\wordbox{1}{Node~2} \\
+
+	\wordbox[]{1}{$\vdots$} \\[1ex]
+
+	\wordbox{1}{Node~$N$}
+\end{bytefield}
+\end{document}

@@ -1,0 +1,17 @@
+\documentclass[border=5pt]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}{16} \wordbox{1}{Some data} \\
+		\wordbox[lrt]{1}{Lots of data} \\
+
+		\skippedwords \\
+
+		\wordbox[lrb]{1}{} \\
+
+		\wordbox{2}{More data}
+\end{bytefield}
+\end{document}

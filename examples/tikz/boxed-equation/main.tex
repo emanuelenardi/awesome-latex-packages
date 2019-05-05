@@ -1,0 +1,45 @@
+\documentclass[border=.5cm]{standalone}
+
+\usepackage{xcolor}
+\colorlet{brighter}{blue!25}
+\colorlet{darker}{blue!50!black}
+%
+\usepackage{amssymb, mathtools}
+
+\usepackage{tikz}
+\usetikzlibrary[
+	positioning
+]
+
+% arara: pdflatex
+% arara: latexmk: { clean: partial }
+\begin{document}
+\(
+	T(n) =
+	\begin{dcases}
+		\tikz[%
+			baseline,
+			remember picture]{
+			\node[%
+				draw = darker,
+				fill = brighter,
+				densely dashed,
+				rectangle,
+				rounded corners = 8,
+				inner sep = 2pt,
+				anchor = base] (sommatoria) {
+				\( \displaystyle\sum_{1 \leqslant i \leqslant h} a_i \)
+			};
+		}\: T(n-1) + cn^{\beta} & n \geqslant m \\
+		\Theta(n) & n \leqslant m \leqslant h \\
+	\end{dcases}
+\)
+
+\begin{tikzpicture}[remember picture, overlay]
+	\node[
+		text = darker,
+		above right = 5pt and -10pt of sommatoria,
+		inner sep = 1pt] (a) {a};
+	\path[->, darker] (sommatoria.north) edge [bend left = 45] (a.west);
+\end{tikzpicture}
+\end{document}

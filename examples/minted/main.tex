@@ -1,0 +1,43 @@
+% NOTE https://tex.stackexchange.com/questions/274365/converting-latex-highlighted-code-listing-to-image
+% NOTE https://stackoverflow.com/questions/1966425/source-code-highlighting-in-latex
+\documentclass[varwidth, border={0.5cm 0.1cm 0.1cm 0.1cm}]{standalone}
+
+\usepackage{fontspec}
+\usepackage{minted}
+
+\setsansfont{Calibri}
+\setmonofont{Consolas}
+
+\renewcommand{\theFancyVerbLine}{%
+	\sffamily%
+	\textcolor{gray}{%
+		\scriptsize\arabic{FancyVerbLine}%
+	}%
+}
+
+\setminted{
+	,breaklines
+	% TODO simboli breaklines
+	,fontsize	= \normalsize
+	,linenos
+	,numbersep	= 5pt
+	,frame		= lines
+	,framesep	= 2mm
+	,texcomments
+	,escapeinside		= !!
+	,mathescape
+}
+
+% NOTE compilazione
+% xelatex -shell-escape main.tex
+\begin{document}
+
+\begin{minted}{java}
+string title = "This is a Unicode π in the sky"
+/*
+Defined as \(\pi=\lim_{n\to\infty}\frac{P_n}{d}\) where $P$ is the perimeter of an \(n\)-sided regular polygon circumscribing a circle of diameter \(d\).
+*/
+const double pi = 3.1415926535
+\end{minted}
+
+\end{document}

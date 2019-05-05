@@ -1,0 +1,98 @@
+% http://www.texample.net/tikz/examples/tikz-listings/
+% \documentclass[border={35pt 10pt 150pt 60pt}]{standalone}
+\documentclass{article}
+\usepackage{comment}
+\usepackage{ifxetex}
+\ifxetex
+	\usepackage[no-math]{fontspec}
+
+	\usepackage{polyglossia}
+	\setmainlanguage{italian}
+
+	% \setmonofont{SourceCodePro}[
+	% 	% Scale = MatchLowercase,
+	% 	Extension	= .ttf,
+	% 	UprightFont = *-Regular,
+	% 	FontFace 	= {el}{n}{Font = *-ExtraLight},
+	% 	FontFace 	= {l}{n}{Font  = *-Light},
+	% 	FontFace 	= {m}{n}{Font  = *-Medium},
+	% 	FontFace 	= {sb}{n}{Font = *-Semibold},
+	% 	FontFace 	= {xb}{n}{Font = *-Black},
+	% ]
+\else
+	\usepackage[T1]{fontenc}
+	\usepackage[utf8]{inputenc}
+	\usepackage[italian]{babel}
+\fi
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{listings}
+\usepackage[
+	cachedir			= _minted-cache,
+	% fontseries = bold,
+	% frame=lines,
+	% chapter,
+]{minted}
+\usemintedstyle{colorful}
+\usepackage{xcolor}
+\colorlet{highlightColor}{red!25}
+
+
+\setminted[cpp]{
+	linenos				= true,
+	escapeinside		= !!,
+	highlightcolor		= highlightColor,
+	mathescape,
+	numberblanklines	= false,
+	tabsize				= 4,
+	% obeytabs			= true,
+	% showtabs			= true,
+	% tab					= \rightarrowfill,
+}
+
+\newcommand\codeRef[1]{\tikz[remember picture] \node [] (#1) {};}
+
+% arara: xelatex: { shell: yes }
+% arara: xelatex: { shell: yes }
+\begin{document}
+
+% \begin{listing}[H]
+% \begin{minted}[highlightlines = {2, 4}]{cpp}
+\begin{minted}{cpp}
+int!\codeRef{a}!puissance!\codeRef{b}!(int x,!\codeRef{c}!int n) {
+    int i, p = 1; !\codeRef{d}!
+
+for (i = 1; i <= n; i++)
+    p = p * x; !\codeRef{e}!
+
+return p; !\codeRef{f}!
+\end{minted}
+% \caption{Example of a listing.}%
+% \label{lst:example}
+% \end{listing}
+
+\begin{tikzpicture}[remember picture, overlay,
+	every edge/.append style = { -, thick, >=stealth, lightgray, dashed, line width = 1pt },
+	every node/.append style = { font = \itshape, fill = green!20, align = center, minimum height = 10pt},
+	text width = 2.5cm ]
+
+	\node [above left = .75cm and -.75 cm of a, text width = 2cm] (A) {return value type};
+	\node [right = 0.25cm of A, text width = 1.4cm] (B) {function name};
+	\node [right = 0.5cm of B]	(C) {list of formal parameters};
+	\node [right = 4cm of d]	(D) {local variables declaration};
+	\node [right = 2cm of e]	(E) {instructions};
+	\node [right = 5cm of f]	(F) {instruction \texttt{\bfseries return}};
+
+	\draw (A.south) + (0, 0) coordinate(x1) edge (x1 |- a.north);
+	\draw (B.south) + (0, 0) coordinate(x2) edge (x2 |- b.north);
+	\draw (C.south) + (0, 0) coordinate(x3) edge (x3 |- c.north);
+
+	\draw (D.west) edge (d.east) ;
+	\draw (E.west) edge (e.east) ;
+	\draw (F.west) edge (f.east) ;
+\end{tikzpicture}
+
+% \listoflistings
+
+\end{document}

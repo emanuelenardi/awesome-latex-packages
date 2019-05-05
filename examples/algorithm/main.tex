@@ -1,0 +1,50 @@
+\documentclass{report}
+
+\usepackage{
+	,algorithm
+	,amsmath
+	,xcolor
+	,subcaption
+}
+
+\DeclareMathOperator{\sgn}{sign}
+\DeclareCaptionFont{color}{\color{gray}}
+\captionsetup[algorithm]{
+	labelfont={bf,color},
+	textfont={it}
+}
+
+\renewcommand{\thealgorithm}{\thechapter.\arabic{algorithm}}
+
+% NOTE just for this example
+\setcounter{chapter}{10}
+
+% arara: pdflatex
+% arara: latexmk: { clean: partial }
+\begin{document}
+
+\begin{algorithm}[H]
+\caption{didascalia}
+\begin{enumerate}
+	\item Initialize the observation weights \( w_i = 1/N \), \( i = 1, 2, \dots, N \)
+
+	\item For \( m = 1 \) to \( M \):
+
+	\begin{enumerate}
+		\item Fit a classifier \( G_{m} (x) \) to the training data using weights \( w_i \).
+
+		\item Compute
+		\[
+			\text{err}_m = \frac{\sum_{i=1}^N w_i I(y_i \neq G_m(x_i))}{\sum_{i=1}^{N} w_{i}}.
+		\]
+
+		\item Compute \( \alpha_m = \log((1 - \text{err}_m) / \text{err}_m) \).
+
+		\item Set \( w_i \leftarrow w_i \cdot \exp [\alpha_m \cdot I(y_i \neq G_m(x_i))] \), \(i = 1, 2, \dots, N \).
+	\end{enumerate}
+
+	\item Output \( G(x) = \sgn \bigl[ \sum_{m = 1}^M \alpha_m G_m(x) \bigr] \).
+	\end{enumerate}
+\end{algorithm}
+
+\end{document}

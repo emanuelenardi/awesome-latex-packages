@@ -1,0 +1,26 @@
+\documentclass[border={5pt 5pt 40pt 52pt}]{standalone}
+
+\usepackage{bytefield}
+\usepackage{rotating}
+
+\newcommand{\bitlabel}[2]{%
+	\bitbox[]{#1}{%
+		\raisebox{0pt}[4ex][0pt]{%
+			\turnbox{45}{\fontsize{7}{7}\selectfont#2}%
+		}%
+	}%
+}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}[bitwidth=1em]{16}
+	\bitlabel{1}{Carry} & \bitlabel{1}{Reserved} & \bitlabel{1}{Parity} & \bitlabel{1}{Reserved} & \bitlabel{1}{Adjust} & \bitlabel{1}{Reserved} & \bitlabel{1}{Zero} & \bitlabel{1}{Sign} & \bitlabel{1}{Trap} & \bitlabel{1}{Interrupt enable} & \bitlabel{1}{Direction} & \bitlabel{1}{Overflow} & \bitlabel{2}{I/O privilege level (12--13)} & \bitlabel{1}{Nested task} &
+	\bitlabel{1}{Reserved} \\
+
+	\bitheader{0-15} \\
+
+	\bitbox{1}{0} & \bitbox{1}{1} & \bitbox{1}{0} & \bitbox{1}{0} & \bitbox{1}{0} & \bitbox{1}{0} & \bitbox{1}{0} & \bitbox{1}{1} & \bitbox{1}{0} & \bitbox{1}{1} & \bitbox{1}{0} & \bitbox{1}{0} &
+	\bitbox{1}{0} & \bitbox{1}{0} & \bitbox{1}{0} & \bitbox{1}{0}
+\end{bytefield}
+\end{document}

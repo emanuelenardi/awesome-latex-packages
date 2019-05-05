@@ -1,0 +1,16 @@
+\documentclass[border={5pt 5pt 5pt 8pt}]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}{32}
+	\bitheader{0-31} \\
+
+	\bitbox{4}{Four} &
+	\bitbox{8}{Eight} &
+	\bitbox{16}{Sixteen} &
+	\bitbox{4}{Four}
+\end{bytefield}
+\end{document}

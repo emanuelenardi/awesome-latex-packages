@@ -1,0 +1,90 @@
+% NOTE for a set of predefined color names, like LemonChiffon1
+\PassOptionsToPackage{
+	x11names
+}{xcolor}
+
+\documentclass{article}
+
+\usepackage{
+	,listings
+	,algorithm2e
+	,textcomp
+	,xcolor
+}
+
+% NOTE allow "No Starch Press"-like custom line numbers (essentially, bulleted line
+% numbers for only those lines the author will address)
+\usepackage{
+	pifont,
+	ifthen
+}
+
+\newcommand{\numold}[1]{\oldstylenums{#1}}
+\newcounter{lstNoteCounter}
+\newcommand*{\lnote}{%
+	\stepcounter{lstNoteCounter}\vbox{\llap{{\lnnum{\thelstNoteCounter}}\hskip 1em}}%
+}
+
+\newcommand{\lnnum}[1]{% Print pifont circled number for line label
+	\ifcase#1%
+	% nothing for 0
+	\or\ding{202}% 1
+	\or\ding{203}% 2
+	\or\ding{204}% 3
+	\or\ding{205}% 4
+	\or\ding{206}% 5
+	\or\ding{207}% 6
+	\or\ding{208}% 7
+	\or\ding{209}% 8
+	\or\ding{210}% 9
+	\or\ding{211}% 10
+	\else{NUM TOO HIGH}%
+	\fi%
+}
+
+\lstnewenvironment{csource2}[1][]
+{
+    \setcounter{lstNoteCounter}{0}
+    \lstset{
+		basicstyle = \ttfamily,
+		language = C,
+		numberstyle = \numold,
+		numbers = right,
+        frame = lines,
+		framexleftmargin = 0.5em,
+		framexrightmargin = 0.5em,
+        backgroundcolor = \color{LemonChiffon1},
+		showstringspaces = false,
+        escapeinside = {(*@}{@*)},
+		%
+		#1
+	}
+}
+{}
+
+% arara: pdflatex
+% arara: latexmk: { clean: partial }
+\begin{document}
+
+\section{Hello, world!}
+The following program \texttt{hello.c} simply prints ``Hello, world!'':
+
+\begin{csource2}
+(*@\lnote@*)#include <stdio.h>
+
+/* This is a comment. */
+(*@\lnote@*)int main() {
+(*@\lnote@*)    printf("Hello, world!\n");
+(*@\lnote@*)    return 0;
+}
+\end{csource2}
+
+\noindent
+We first include the \texttt{stdio.h} header file \lnnum{1}. We then declare
+the \texttt{main} function \lnnum{2}. We then print ``Hello, world!'' to
+standard output (a.k.a., \textit{STDOUT}) \lnnum{3}. Finally, we return value
+0 to let the caller of this program know that we exited safely without any
+errors \lnnum{4}.
+
+
+\end{document}

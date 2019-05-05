@@ -1,0 +1,17 @@
+\documentclass[border={5pt 5pt 5pt 8pt}]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}{16}
+
+	\bitheader{0,7,8,15} \\
+
+	\bitbox{8}{8-bit field} & \bitbox[lrt]{8}{} \\
+
+	\wordbox[lrb]{1}{24-bit field}
+
+\end{bytefield}
+\end{document}

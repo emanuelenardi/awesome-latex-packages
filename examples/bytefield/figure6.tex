@@ -1,0 +1,12 @@
+\documentclass[border=5pt]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}{16}
+	\bitboxes*{1}{01000010} &
+	\bitbox{4}{src\strut} & \bitbox{4}{dest\strut} & \bitbox{4}{const\strut}
+\end{bytefield}
+\end{document}

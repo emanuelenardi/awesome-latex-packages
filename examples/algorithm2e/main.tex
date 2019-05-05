@@ -1,0 +1,63 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{xcolor}
+
+% NOTE these package are imported only for show the compatibility with the 'algorithm2e' package
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage[ruled, italiano, onelanguage, algo2e]{algorithm2e}
+\DontPrintSemicolon
+\LinesNotNumbered
+
+\SetAlgorithmName{Algoritmo}{Algoritmo}{Elenco degli algoritmi}
+\SetAlgoProcName{Procedura}{Procedura}
+\SetAlgoFuncName{Funzione}{Funzione}
+\SetAlgoSkip{bigskip}
+\SetInd{0.25em}{2em}
+\SetAlCapSkip{5ex}
+\SetAlgoCaptionSeparator{ --}
+\SetCommentSty{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetKwComment{Comment}{\%~~}{}
+\SetNlSty{texttt}{(}{)}
+\SetNlSkip{.5em}
+
+% arara: pdflatex
+% arara: latexmk: { clean: partial }
+\begin{document}
+
+\listofalgorithmes
+
+\section{Algoritmi}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\begin{algorithm2e}[H]
+\caption{How to write algorithms}
+
+\KwData{this text}
+\KwResult{how to write algorithm with \LaTeX2e }
+
+\BlankLine
+initialization \Comment*[l]{valori iniziali}
+
+\BlankLine
+\While{not at end of this document}{
+	read current\;
+
+	\BlankLine
+	\eIf{understand}{
+		go to next section\;
+		current section becomes this one\;
+	}{
+		go back to the beginning of current section\;
+	}
+}
+\end{algorithm2e}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\end{document}

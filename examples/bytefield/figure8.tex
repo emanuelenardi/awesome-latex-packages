@@ -1,0 +1,18 @@
+\documentclass[border={5pt 5pt 5pt 8pt}]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}{16}
+	\bitheader{0,7,8,15} \\
+
+	\begin{rightwordgroup}{Header}
+		\bitbox{4}{Tag} & \bitbox{12}{Mask} \\
+		\bitbox{8}{Source} & \bitbox{8}{Destination}
+	\end{rightwordgroup} \\
+
+	\wordbox{3}{Data}
+\end{bytefield}
+\end{document}

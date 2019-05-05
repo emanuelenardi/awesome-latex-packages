@@ -1,0 +1,18 @@
+\documentclass{article}
+
+\usepackage{pythontex}
+
+%! arara: clean: { extensions: [ bak* ] }
+% NOTE C:\Personali\texlive\2018\texmf-dist\scripts\latexindent\defaultSettings.yaml
+%! arara: indent: { overwrite: yes, silent: on }
+% arara: pdflatex: { draft: yes }
+% NOTE regola non funzionante su windows
+%! arara: pythontex
+% arara: pdflatex: { interaction: batchmode, synctex: yes }
+% arara: clean: { extensions: [ aux, log, pytxcode ] }
+% arara: clean: { files: [indent.log] }
+\begin{document}
+
+test
+
+\end{document}

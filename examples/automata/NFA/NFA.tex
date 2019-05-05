@@ -1,0 +1,44 @@
+\documentclass{standalone}
+
+\usepackage{set-math}
+\usepackage{set-automata}
+
+% arara: pdflatex
+% arara: latexmk: { clean: partial }
+\begin{document}
+	\begin{tikzpicture}[scale = 0.75, transform shape]
+	%
+	\newState{0}{}{initial}{}
+	\newState{1}{}{}{right = of 0}
+	\newState{2}{}{}{above right = of 1}
+	\newState{3}{}{}{below right = of 1}
+	\newState{4}{}{}{right = of 2}
+	\newState{5}{}{}{right = of 3}
+	\newState{6}{}{}{below right = of 4}
+	\newState{7}{}{}{right = of 6}
+	\newState{8}{}{}{right = of 7}
+	\newState{9}{}{}{right = of 8}
+	\newState{10}{}{accepting}{right = of 9}
+	%
+	% \newTransition{0}{1}{\varepsilon}{above}
+	%
+	% \newTransition{1}{2}{\varepsilon}{above left}
+	% \newTransition{1}{3}{\varepsilon}{below left}
+	%
+	\newTransition{2}{4}{a}{above}
+	\newTransition{3}{5}{b}{below}
+	%
+	% \newTransition{4}{6}{\varepsilon}{above right}
+	% \newTransition{5}{6}{\varepsilon}{below right}
+	%
+	% \newTransition{6}{7}{\varepsilon}{above}
+	\newTransition{7}{8}{a}{above}
+	\newTransition{8}{9}{b}{above}
+	\newTransition{9}{10}{b}{above}
+	%
+	% \path[->]
+	% 	(0) edge [bend right = 90] node [below] {\varepsilon} (7)
+	% 	(6) edge [bend right = 90] node [above] {\varepsilon} (0);
+	\end{tikzpicture}
+% 	\caption{Espressione regolare \( {(a \mid b)}^{*} abb \)}
+\end{document}

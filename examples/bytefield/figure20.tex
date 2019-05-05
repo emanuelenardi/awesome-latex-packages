@@ -1,0 +1,15 @@
+\documentclass[border=5pt]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}[endianness=big,bitwidth=2em]{16}
+	\bitheader[lsb=16]{16-31} \\
+	\bitbox{1}{\tiny Enable} & \bitbox{7}{Reserved} & \bitbox{8}{Bus} \\[3ex]
+
+	\bitheader{0-15} \\
+	\bitbox{5}{Device} & \bitbox{3}{Function} & \bitbox{6}{Register} & \bitbox{2}{00}
+\end{bytefield}
+\end{document}

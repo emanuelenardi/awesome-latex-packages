@@ -1,0 +1,21 @@
+\documentclass[border={5pt 5pt 5pt 8pt}]{standalone}
+
+\usepackage{bytefield}
+
+\usepackage{xcolor}
+\definecolor{lightgray}{gray}{0.8}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}{32}
+	\bitheader{0,4,8,12,16,20,24,28} \\
+
+	\bitbox{8}{Tag} &
+	\bitbox{8}{Value} &
+	\bitbox{4}{\color{lightgray}\rule{\width}{\height}} &
+	\bitbox{12}{Mask} \\
+
+	\wordbox{1}{Key}
+\end{bytefield}
+\end{document}

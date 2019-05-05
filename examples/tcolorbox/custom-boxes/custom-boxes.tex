@@ -1,0 +1,32 @@
+\documentclass[varwidth]{standalone}
+
+\usepackage{amsmath}
+\usepackage{empheq}
+\usepackage[most]{tcolorbox}
+
+\newtcbox{\mymath}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=blue!30!black,
+    colback=blue!30, boxrule=1pt,
+    #1}
+
+\begin{document}
+\begin{empheq}[box=\tcbhighmath]{equation*}
+    c_i = \langle\psi \mid \phi\rangle
+\end{empheq}
+
+\tcbset{highlight math style={boxsep=5mm,colback=blue!30!red!30!white}}
+
+\begin{empheq}[box=\tcbhighmath]{equation*}
+    c_i = \langle\psi \mid \phi\rangle
+\end{empheq}
+
+\begin{empheq}[box=\mymath]{equation*}
+    c_i = \langle\psi \mid \phi\rangle
+\end{empheq}
+
+\begin{empheq}[box={\mymath[colback=red!30,drop lifted shadow, sharp corners]}]{equation*}
+    c_i = \langle\psi \mid \phi\rangle
+\end{empheq}
+
+\end{document}

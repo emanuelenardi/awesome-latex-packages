@@ -1,0 +1,18 @@
+\documentclass[border=5pt]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}{8}
+	\bitbox{1}{D} &
+	\bitbox{1}{R} &
+	\bitbox{1}{M} &
+	\bitbox{1}{F} &
+	\bitbox{1}{S} &
+	\bitbox{1}{L} &
+	\bitbox{1}{T} &
+	\bitbox{1}{D}
+\end{bytefield}
+\end{document}

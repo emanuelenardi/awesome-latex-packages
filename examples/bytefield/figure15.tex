@@ -1,0 +1,40 @@
+\documentclass[border={5pt 5pt 5pt 8pt}]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}[rightcurly=.,
+				  rightcurlyspace=0pt]{32}
+
+	\bitheader[endianness=big]{0,7,8,15,16,23,24,31} \\
+
+	\begin{rightwordgroup}{0Ch} \bitbox{8}{Byte 15 \\
+
+	\tiny (highest address)} &
+	\bitbox{8}{Byte 14} &
+	\bitbox{8}{Byte 13} &
+	\bitbox{8}{Byte 12}
+	\end{rightwordgroup} \\
+
+	\begin{rightwordgroup}{08h}
+		\bitbox{32}{Long 0}
+	\end{rightwordgroup} \\
+
+	\begin{rightwordgroup}{04h}
+		\bitbox{16}{Word 1} &
+		\bitbox{16}{Word 0}
+	\end{rightwordgroup} \\
+
+	\begin{rightwordgroup}{00h}
+		\bitbox{8}{Byte 3} &
+		\bitbox{8}{Byte 2} &
+		\bitbox{8}{Byte 1} &
+		\bitbox{8}{Byte 0 \\
+
+		\tiny (lowest address)}
+	\end{rightwordgroup}
+
+\end{bytefield}
+\end{document}

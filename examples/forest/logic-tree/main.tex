@@ -1,0 +1,91 @@
+\documentclass[border=.5cm]{standalone}
+
+\usepackage{
+	,forest
+	,pifont
+	,tikz
+	,xcolor
+}
+
+\usetikzlibrary[
+	,decorations.text
+	,positioning
+]
+
+\newcommand{\green}[1]{\textcolor{ForestGreen}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\newcommand{\cmark}{\green{\ding{51}}}
+\newcommand{\xmark}{\red{\ding{55}}}
+
+\begin{document}
+
+
+\begin{forest}
+where n children = 0 {
+	edge = {->, dashed, blue}
+}{},
+passage label/.style = {
+	edge label = {node[blue!25, midway, right, font = \tiny]{#1}}
+},
+[\(\neg(\forall xy (\mathcal{P}(x) \supset \mathcal{Q}(y)) \supset (\exists \mathcal{P}(x) \supset \forall y \mathcal{Q}(y)))\),
+ name = step0
+	[\( (\forall xy (\mathcal{P}(x) \supset \mathcal{Q}(y)) \) \\
+	 \( \neg (\exists \mathcal{P}(x) \supset \forall y \mathcal{Q}(y)) \),
+	 name = step1,
+	 tikz = {\node [draw, dashed, blue!25, fit = ()(!1)(!lll)] {};},
+	 passage label = \(\Phi \land \neg \Psi \)
+		[\( \exists \mathcal{P}(x) \) \\
+		 \( \neg \forall y \mathcal{Q}(y)) \),
+		 name = step2,
+		 passage label = \(\Phi \land \neg \Psi \)
+			[\( \mathcal{P}(a) \) \\
+			 \( \neg \mathcal{Q}(b) \),
+			 name = step3
+				[\( \mathcal{P}(a) \supset \mathcal{Q}(b) \),
+				 name = step4
+					[\( \neg \mathcal{P}(a) \),
+					 name = p
+						[\xmark]
+					]
+					[\( \mathcal{Q}(b) \),
+					 name = q
+						[\xmark]
+					]
+				]
+			]
+		]
+	]
+]
+%
+\draw[
+	->,
+	loosely dashed,
+	blue,
+	postaction = {decorate},
+	decoration = {
+		raise = 2pt,
+		text color = blue,
+		text align = center,
+		text along path,
+		text format delimiters = {<}{>},
+		text = {<\footnotesize>\ contraddizione\ },
+	}
+] (p) to[out = west, in = west] (step3);
+\draw[
+	->,
+	loosely dashed,
+	blue,
+	postaction = {decorate},
+	decoration = {
+		raise = 2pt,
+		text color = blue,
+		text align = {center},
+		text along path,
+		text format delimiters = {<}{>},
+		text = {<\footnotesize>\ contraddizione\ },
+	}
+] (q) to[out = east, in = east] (step3);
+\end{forest}
+
+\end{document}

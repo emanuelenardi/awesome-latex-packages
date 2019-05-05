@@ -1,0 +1,64 @@
+\documentclass{article}
+
+\usepackage[
+	italian
+]{babel}
+
+\usepackage[
+	symbol,
+	perpage
+]{footmisc}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{titling}
+
+\usepackage{hyperref}
+
+\def\Author{Emanuele Nardi}
+
+\def\Title{Titolo del PDF}
+\def\Subject{Materia}
+\def\Keywords{Parole chiave}
+
+\title{Titolo mostrato sul PDF}
+
+\thanksmarkseries{arabic}
+\author{
+	\textbf{\Author}%
+	\thanks{\texttt{emanuele.nardi@studenti.unitn.it}}
+}
+\date{\today}
+
+\hypersetup{
+	pdfinfo = {
+		Title = {\Title},
+		Author = {\Author},
+		Subject = {\Subject},
+		Creator = {pdflatex},
+		Producer = {LaTeX},
+		Keywords = {\Keywords},
+		colorlinks = true,
+		backref = true,
+	}
+}
+
+\begin{document}
+
+\maketitle
+
+This is a test%
+\footnote[1]{Simbolo 1}%
+\footnote[2]{Simbolo 2}%
+\footnote[3]{Simbolo 3}%
+\footnote[4]{Simbolo 4}%
+\footnote[5]{Simbolo 5}%
+\footnote[6]{Simbolo 6}%
+\footnote[7]{Simbolo 7}%
+\footnote[8]{Simbolo 8}%
+\footnote[9]{Simbolo 9}%
+\footnote[10]{Simbolo 10}%
+\footnote[11]{Simbolo 11}%
+\footnote[12]{Simbolo 12}%
+\footnote[13]{Simbolo 13}%
+
+\end{document}

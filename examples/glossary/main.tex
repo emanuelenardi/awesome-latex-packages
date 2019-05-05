@@ -1,0 +1,59 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+
+\usepackage{xcolor}
+
+% NOTE glossario
+\usepackage[toc, acronym, numberedsection]{glossaries-extra}
+\makeglossaries
+\input{assets/glossary.tex}
+
+% NOTE stili disponibili
+% \setglossarystyle{list} % default
+\setglossarystyle{altlist}
+% \setglossarystyle{listgroup}
+% \setglossarystyle{listhypergroup}
+% \setglossarystyle{long}
+
+\title{Utilizzo del glossario}
+\author{Emanuele Nardi}
+\date{\today}
+
+% NOTE ciclo di compilazione
+% arara: pdflatex
+% arara: makeglossaries
+% arara: pdflatex
+% arara: clean: { extensions: [acn, acr, alg, glg, glo, gls, ist] }
+% arara: latexmk: { clean: partial }
+
+% NOTE ultima modifica 2019-03-09
+\begin{document}
+\maketitle
+
+% NOTE cambio intestazione "indice"
+\renewcommand{\contentsname}{Indice dei contenuti}
+% NOTE indice dei contenuti
+\tableofcontents
+
+\section{Esempio con termini}
+
+The \verb|\Gls{latex}| \textcolor{blue}{\Gls{latex}} typesetting markup language is specially suitable for documents that include \verb|\gls{maths}| \textcolor{blue}{\gls{maths}}. \Glspl{formula} are rendered properly an easily once one gets used to the commands.
+
+\section{Esempio con acronimi}
+
+Given a set of numbers, there are elementary methods to compute its \verb|\acrlong{gcd}| \textcolor{blue}{\acrlong{gcd}}, which is abbreviated \verb|\acrshort{gcd}| \textcolor{blue}{\acrshort{gcd}}.
+This process is similar to that used for the \verb|\acrfull{lcm}| \textcolor{blue}{\acrfull{lcm}}.
+
+% NOTE riempimento della pagina
+\vfill
+
+% NOTE stampa il glossario
+\printglossary[title=Lista dei termini, toctitle=Glossario]
+
+% NOTE stampa solo gli acronimi
+\printglossary[type=\acronymtype, title=Lista degli acronimi, toctitle=Acronimi]
+
+\end{document}

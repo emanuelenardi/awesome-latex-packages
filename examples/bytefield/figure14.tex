@@ -1,0 +1,21 @@
+\documentclass[border={5pt 0pt 5pt 8pt}]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}[boxformatting={\centering\itshape},
+				  bitwidth=1.5em,
+				  endianness=big]{20}
+
+	\bitheader{0-19} \\
+
+	\bitbox{1}{\tiny F/E} &
+	\bitbox{1}{\tiny T0} &
+	\bitbox{1}{\tiny T1} &
+	\bitbox{1}{\tiny Fwd} &
+	\bitbox{16}{Data value} \\
+
+\end{bytefield}
+\end{document}

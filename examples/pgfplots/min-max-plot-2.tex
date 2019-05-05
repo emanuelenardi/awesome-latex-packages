@@ -1,0 +1,43 @@
+\documentclass[11pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{
+	datavisualization,
+	datavisualization.formats.functions}
+
+\begin{document}
+
+\pgfdvdeclarestylesheet{my colors}{
+	default style/.style = {visualizer color=black},
+	1/.style = {visualizer color=blue},
+	2/.style = {visualizer color=red},
+}
+
+\begin{tikzpicture}[baseline,scale=2]
+	\datavisualization [ scientific axes=clean,
+	                     visualize as smooth line/.list={f,g},% not sin and cos
+	                     style sheet=my colors,
+	                     f={label in legend={text=$f(x)$}},
+	                     g={label in legend={text=$g(x)$}},
+	                     data/format=function ]
+
+	data [set=f] {
+		var x : interval [-5:5];
+		func y =  \value x * \value x;
+	}
+	info {
+		\draw [blue,fill=blue!20,] (visualization cs: x={(0)}, y=0) circle [radius=1pt]
+		node [below,font=\footnotesize] {min point};
+	}
+
+	data [set=g] {
+		var x : interval [-5:5];
+		func y = - \value x * \value x +5* \value x +5;
+	}
+	info {
+		\draw [red,fill=red!20] (visualization cs: x={(2.5)}, y=11.25) circle [radius=1pt]
+		node [above,font=\footnotesize] {max point};
+	}
+	;
+\end{tikzpicture}
+
+\end{document}

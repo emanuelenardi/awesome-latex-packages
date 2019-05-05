@@ -1,0 +1,5 @@
+\standalonepreambles
+\subpreamble{../diagram.tex}
+\usepackage {tikz}\usetikzlibrary {positioning}
+\endsubpreamble
+\endstandalonepreambles

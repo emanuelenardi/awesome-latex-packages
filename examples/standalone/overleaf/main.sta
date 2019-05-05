@@ -1,0 +1,8 @@
+\standalonepreambles
+\subpreamble{sections/introduction.tex}
+\usepackage [subpreambles=true]{standalone}\usepackage {import}
+\endsubpreamble
+\subpreamble{diagram.tex}
+\usepackage {tikz}\usetikzlibrary {positioning}
+\endsubpreamble
+\endstandalonepreambles

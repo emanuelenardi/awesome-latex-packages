@@ -1,0 +1,19 @@
+\documentclass[border={5pt 5pt 5pt 15pt}]{standalone}
+
+\usepackage{bytefield}
+\usepackage{graphicx}
+
+\newlength{\bitlabelwidth}
+\newcommand{\rotbitheader}[1]{%
+	\tiny \settowidth{\bitlabelwidth}{\quad 9999}%
+	\rotatebox[origin=B]{90}{\makebox[\bitlabelwidth][r]{#1}}%
+}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}[endianness=big]{8}
+	\bitheader[lsb=995,bitformatting=\rotbitheader]{995-1002} \\
+	\bitbox{4}{A} & \bitbox{4}{B}
+\end{bytefield}
+\end{document}

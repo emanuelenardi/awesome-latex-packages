@@ -1,0 +1,43 @@
+\documentclass{article}
+
+\usepackage{
+	ams-all,
+	mathtools,
+	enumitem,
+	ulem,
+}
+
+\newtheorem{corollario}{Corollario}
+\newtheorem{definizione}{Definizione}
+\newtheorem{esempio}{Esempio}
+\newtheorem{oss}{Osservazione}
+\newtheorem{proposizione}{Proposizione}
+\newtheorem{theorem}{Teorema}
+\newtheorem*{lemma}{Lemma}
+
+% NOTE: comando definito dal package "mathtools"
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\Abs{\bigg\lvert}{\bigg\rvert}
+\DeclarePairedDelimiter\Bracket{\lbrack}{\rbrack}
+
+% arara: pdflatex: { synctex: yes }
+% arara: latexmk: { clean: partial }
+\begin{document}
+
+\begin{equation}
+	\frac{d}{dx} \tan(x) = \frac{d}{dx} \frac{\sin(x)}{\cos(x)} = \frac{\sin(x)' \cdot \cos(x) + \sin(x) \cdot \cos(x)'}{{\sin(x)}^{2} }
+\end{equation}
+
+\begin{theorem}
+Sia \(f(a, b)\) continua, sia \(x_0 \in (a, b)\). %
+Supp. \(f\) defivabile in ogni \(x \neq x_0\).
+
+Allora:
+\begin{itemize}
+	\item se
+	\item se
+\end{itemize}
+\end{theorem}
+
+\end{document}

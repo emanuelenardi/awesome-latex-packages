@@ -1,0 +1,17 @@
+\documentclass[border={5pt 0pt 5pt 8pt}]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}{32}
+
+	\bitheader[lsb=4]{4,12,20,28} \\
+
+	\bitbox{16}{ar\$hrd} & \bitbox{16}{ar\$pro} \\
+
+	\bitbox{8}{ar\$hln} & \bitbox{8}{ar\$pln} & \bitbox{16}{ar\$op} \\
+
+\end{bytefield}
+\end{document}

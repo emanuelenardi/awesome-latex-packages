@@ -1,0 +1,28 @@
+\documentclass[border={5pt 5pt 5pt 8pt}]{standalone}
+
+\usepackage{bytefield}
+
+\newcommand{\fakesixtyfourbits}[1]{%
+	\tiny \ifnum#1=1234567890 #1 \else \ifnum#1>9 \count32=#1 \advance\count32 by 48 \the\count32%
+	\else \ifnum#1<4 #1%
+	\else \ifnum#1=6 $\cdots$%
+	\fi \fi \fi \fi }
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}[%
+	bitwidth=\widthof{\tiny Fwd~},
+	bitformatting=\fakesixtyfourbits,
+	endianness=big]{16}
+
+	\bitheader{0-15} \\
+
+	\bitbox{1}{\tiny F/E} &
+	\bitbox{1}{\tiny T0} &
+	\bitbox{1}{\tiny T1} &
+	\bitbox{1}{\tiny Fwd} &
+	\bitbox{12}{Data value}
+
+\end{bytefield}
+\end{document}

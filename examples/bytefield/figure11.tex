@@ -1,0 +1,16 @@
+\documentclass[border={5pt 0pt 5pt 8pt}]{standalone}
+
+\usepackage{bytefield}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}[endianness=little,bitwidth=0.11111\linewidth]{8}
+	\bitheader{0-7} \\
+	\bitbox{1}{Res} &
+	\bitbox{1}{BE} &
+	\bitbox{1}{CF} &
+	\bitbox{3}{$\mbox{Name\_Len}-1$} &
+	\bitbox{2}{Len\_Len} \\
+\end{bytefield}
+\end{document}

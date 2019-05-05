@@ -1,0 +1,18 @@
+\documentclass[border={5pt 5pt 5pt 8pt}]{standalone}
+
+\usepackage{bytefield}
+
+\newlength{\maxheight}
+\setlength{\maxheight}{\heightof{W}}
+\newcommand{\baselinealign}[1]{%
+	\centering
+	\raisebox{0pt}[\maxheight][0pt]{#1}%
+}
+
+% arara: pdflatex: { synctex: no }
+% arara: latexmk: { clean: partial }
+\begin{document}
+\begin{bytefield}[boxformatting=\baselinealign, bitwidth=1.5em]{2}
+	\bitbox{1}{M} & \bitbox{1}{y}
+\end{bytefield}
+\end{document}

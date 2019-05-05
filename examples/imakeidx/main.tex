@@ -1,0 +1,38 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+
+\usepackage{imakeidx}
+\makeindex[
+	,intoc
+	,columns=2
+	,title=Indice Alfabetico
+	% ,options=assets/index-style.ist
+]
+
+\title{Uso dell'indice}
+\author{Emanuele Nardi}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% NOTE indice dei contenuti
+\tableofcontents
+
+\section{Introduction}
+In this example several keywords\index{keywords} will be used
+which are important and deserve to appear in the Index\index{Index}.
+
+Terms like generate\index{generate} and some\index{others} will also
+show up. Terms in the index can also be nested \index{Index!nested}
+
+\section{Second section}
+This second section\index{section} may include some special word,
+and expand the ones already used\index{keywords!used}.
+
+\printindex
+
+\end{document}

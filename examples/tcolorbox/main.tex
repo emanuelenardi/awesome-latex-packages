@@ -1,0 +1,130 @@
+% NOTE: "varwidth" - adjusts the width to the longest line
+% NOTE: "border" - self explanatory
+\documentclass[
+	varwidth,
+	border=.5cm
+]{standalone}
+
+% NOTE: "fontspec" - permette di specificare i font
+\usepackage{fontspec}
+\usepackage{booktabs}
+
+% NOTE: Install the font locally
+% \newcommand\pathlocalfonts{./fonts/}
+
+% NOTA: includi il seguente codice se stai usando il motore "xelatex"
+% \if\xetex
+%
+% \fi
+
+% NOTE: sets the Roman font for the document
+\setmainfont{AGaramondPro}[
+	Extension		= .otf,
+	UprightFont 	= *-Regular,
+	BoldFont		= *-Bold,
+	ItalicFont		= *-Italic,
+	BoldItalicFont  = *-BoldItalic,
+	Scale			= MatchLowercase,
+]
+
+% sets the Sans Serif font for the document
+% \setsansfont[options]{<fontname>}
+
+% NOTE: fc-list sourcecodepro family
+% NOTE: fc-list sourcecodepro family : file
+% NOTE: sets the Monospaced font for the document
+\setmonofont{SourceCodePro}[
+	% Scale = MatchLowercase,
+	Extension	= .ttf,
+	UprightFont = *-Regular,
+	FontFace 	= {el}{n}{Font = *-ExtraLight},
+	FontFace 	= {l}{n}{Font  = *-Light},
+	FontFace 	= {m}{n}{Font  = *-Medium},
+	FontFace 	= {sb}{n}{Font = *-Semibold},
+	FontFace 	= {xb}{n}{Font = *-Black},
+]
+
+% NOTE: Simula la scrittura a mano
+% NOTE: "hwfamily" stays for handwriting family
+\newfontfamily{\hwfamily}{Signerica}[
+	% Path = {\pathlocalfonts},
+	Extension	= .ttf,
+	UprightFont = *-Medium,
+	BoldFont	= *-Fat,
+	FontFace	= {ul}{n}{Font = *-Thin},
+]
+
+\DeclareRobustCommand{\ulseries}{\fontseries{ul}\selectfont}% Ultralight --> Thin
+\DeclareRobustCommand{\elseries}{\fontseries{el}\selectfont}% ExtraLight
+\DeclareRobustCommand{\lseries}{\fontseries{l}\selectfont}	% Light
+\DeclareRobustCommand{\mseries}{\fontseries{l}\selectfont}	% Medium
+\DeclareRobustCommand{\sbseries}{\fontseries{sb}\selectfont}% Semibold
+\DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}% ExtraBold
+\DeclareRobustCommand{\xbseries}{\fontseries{xb}\selectfont}% Black
+
+\DeclareTextFontCommand{\textul}{\ulseries}					% Ultralight --> Thin
+\DeclareTextFontCommand{\textel}{\elseries}					% ExtraLight
+\DeclareTextFontCommand{\textl}{\lseries}					% Light
+\DeclareTextFontCommand{\textsb}{\sbseries}					% Semibold
+\DeclareTextFontCommand{\texteb}{\ebseries}					% ExtraBold
+\DeclareTextFontCommand{\textxb}{\xbseries}					% Black
+
+\newcommand\hwfont{{\hwfamily Signerica}}
+\newcommand\sffont{{\sffamily Adobe Garamond Pro}}
+\newcommand\msfont{{\ttfamily Source Code Pro}}
+\newcommand\mainfont{{\sffamily Adobe Garamond Pro}}
+
+%! arara: latexmk: { clean: all }
+% arara: xelatex
+% arara: latexmk: { clean: partial }
+\begin{document}
+
+\rmfamily
+\begin{tabular}{@{} l l  @{}}
+\toprule
+	\multicolumn{2}{c}{Fonts I use}		\\
+\midrule
+	Serif Font			& {\sffont}		\\
+	% Sans Serif Font	& {\ssfont}		\\
+	Monospace Font		& {\msfont}		\\
+	Handwriting Font	& {\hwfont}		\\
+	Main font			& {\mainfont}	\\
+\bottomrule
+\end{tabular}
+
+% \subsection*{{\sensfamily Sans Serif Font}}
+%
+% % NOTE: sans serif family
+% \rmfamily
+% Emanuele Nardi\par
+% \par
+
+\subsection*{{\rmfamily Serif Font}}
+
+% NOTE: serif family
+\sffamily
+{\ebseries Adobe Garamond Pro}\par
+{\bfseries Adobe Garamond Pro Bold Italic}\par
+{\itshape Adobe Garamond Pro Bold Italic}\par
+{\bfseries {\itshape Adobe Garamond Pro Bold Italic}}\par
+\par
+
+\subsection*{{\rmfamily Monospace Font}}
+
+% NOTE: monospace family
+\ttfamily
+{\elseries Sorce Code Pro ExtraLight}\par
+{\lseries Sorce Code Pro Light}\par
+{\mseries Sorce Code Pro Regular}\par
+Sorce Code Pro Medium\par
+{\sbseries Sorce Code Pro Semibold}\par
+{\xbseries Sorce Code Pro Black}\par
+
+\subsection*{{\rmfamily Handwriting Font}}
+
+\hwfamily
+{\ulseries Signerica Thin}\par
+Signerica Medium\par
+{\bfseries Signerica Fat}\par
+
+\end{document}
